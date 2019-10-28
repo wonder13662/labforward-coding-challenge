@@ -17,7 +17,7 @@ class SeriesDataList extends React.Component {
     });
 
     return (
-      <div>
+      <div className="series-data-list-box">
         <h3>SeriesDataList</h3>
         <ul>{listItems}</ul>
       </div>

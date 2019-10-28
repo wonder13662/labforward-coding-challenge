@@ -8,11 +8,16 @@ class SeriesDataListItem extends React.Component {
 
     return (
       <li>
-        <h3>SeriesDataListItem</h3>
-        <ActualDataGraph actualData={actualData}></ActualDataGraph>
-        <AreaOfInterestGraph
-          areaOfInterest={areaOfInterest}
-        ></AreaOfInterestGraph>
+        <div className="item-box">
+          <div className="item-box--actual-data-graph">
+            <ActualDataGraph actualData={actualData}></ActualDataGraph>
+          </div>
+          <div className="item-box--area-of-intereset-graph">
+            <AreaOfInterestGraph
+              areaOfInterest={areaOfInterest}
+            ></AreaOfInterestGraph>
+          </div>
+        </div>
       </li>
     );
   }

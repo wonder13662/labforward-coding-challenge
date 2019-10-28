@@ -32,12 +32,10 @@ class SeriesDataPage extends React.Component {
     return (
       <div>
         <h3>SeriesDataPage</h3>
-        <ul>
-          <SeriesDataList
-            actualDataList={actualDataList}
-            areaOfInterestList={areaOfInterestList}
-          />
-        </ul>
+        <SeriesDataList
+          actualDataList={actualDataList}
+          areaOfInterestList={areaOfInterestList}
+        />
       </div>
     );
   }
