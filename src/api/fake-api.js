@@ -1,8 +1,15 @@
+import actualData from "../mockup/actual-data";
+import areaOfInterest from "../mockup/area-of-interest";
+
 export default {
   fetchActualDataList: function() {
-    // TODO fetch mock data
+    return new Promise((resolve, reject) => {
+      resolve(actualData);
+    });
   },
   fetchAreaOfInterestList: function() {
-    // TODO fetch mock data
+    return new Promise((resolve, reject) => {
+      resolve(areaOfInterest);
+    });
   }
 };
