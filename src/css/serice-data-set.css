@@ -17,16 +17,5 @@
 }
 
 .item-box {
-  display: flex;
-}
-.item-box > .item-box--actual-data-graph {
-  flex: 1;
-  color: white;
-  background-color: red;
-}
-
-.item-box > .item-box--area-of-intereset-graph {
-  flex: 1;
-  color: white;
-  background-color: green;
+  height: 400px;
 }
