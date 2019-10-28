@@ -1,7 +1,7 @@
 import React from "react";
-import SeriesDataSet from "./components/series-data-set";
+import SeriesDataPage from "./components/series-data-page";
 function App() {
-  return <SeriesDataSet />;
+  return <SeriesDataPage />;
 }
 
 export default App;
