@@ -30,12 +30,13 @@ class SeriesDataPage extends React.Component {
   render() {
     const { actualDataList, areaOfInterestList } = this.state;
     return (
-      <div>
-        <h3>SeriesDataPage</h3>
+      <div className="series-data-page">
+        <div className="page-gutter"></div>
         <SeriesDataList
           actualDataList={actualDataList}
           areaOfInterestList={areaOfInterestList}
         />
+        <div className="page-gutter"></div>
       </div>
     );
   }

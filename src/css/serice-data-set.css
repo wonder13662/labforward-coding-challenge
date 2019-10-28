@@ -1,6 +1,19 @@
-ul.series-data-list-box {
-  min-width: 960px;
-  max-width: 1280px;
+.series-data-page {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+
+.series-data-page > .page-gutter {
+  width: 5rem;
+}
+
+.series-data-list-box {
+  width: 100%;
+}
+
+.series-data-list-box > .series-data-list {
+  list-style-type: none;
 }
 
 .item-box {
