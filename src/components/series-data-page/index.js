@@ -17,7 +17,6 @@ class SeriesDataPage extends React.Component {
       fakeApi.fetchAreaOfInterestList()
     ])
       .then(responses => {
-        console.log("responses:", responses);
         const actualDataList = responses[0].data.actualData;
         const areaOfInterestList = responses[1].data.areaOfInterest;
         this.setState({ actualDataList, areaOfInterestList });
