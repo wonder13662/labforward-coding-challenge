@@ -3,7 +3,8 @@ import "../../css/actual-data-graph.css";
 
 class ActualDataGraph extends React.Component {
   render() {
-    return <div>ActualDataGraph</div>;
+    const { actualData } = this.props;
+    return <div>ActualDataGraph:{actualData.length}</div>;
   }
 }
 

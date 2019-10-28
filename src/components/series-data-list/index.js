@@ -4,12 +4,22 @@ import "../../css/serice-data-set.css";
 
 class SeriesDataList extends React.Component {
   render() {
+    const { actualDataList, areaOfInterestList } = this.props;
+
+    const listItems = actualDataList.map((actualData, idx) => {
+      return (
+        <SeriesDataListItem
+          key={idx}
+          actualData={actualData}
+          areaOfInterest={areaOfInterestList[idx]}
+        />
+      );
+    });
+
     return (
       <div>
         <h3>SeriesDataList</h3>
-        <ul>
-          <SeriesDataListItem />
-        </ul>
+        <ul>{listItems}</ul>
       </div>
     );
   }

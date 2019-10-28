@@ -3,7 +3,9 @@ import "../../css/area-of-interest-graph.css";
 
 class AreaOfInterestGraph extends React.Component {
   render() {
-    return <div>AreaOfInterestGraph</div>;
+    const { areaOfInterest } = this.props;
+
+    return <div>AreaOfInterestGraph:{areaOfInterest.length}</div>;
   }
 }
 

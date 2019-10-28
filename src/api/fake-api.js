@@ -4,12 +4,12 @@ import areaOfInterest from "../mockup/area-of-interest";
 export default {
   fetchActualDataList: function() {
     return new Promise((resolve, reject) => {
-      resolve(actualData);
+      resolve({ data: actualData });
     });
   },
   fetchAreaOfInterestList: function() {
     return new Promise((resolve, reject) => {
-      resolve(areaOfInterest);
+      resolve({ data: areaOfInterest });
     });
   }
 };
