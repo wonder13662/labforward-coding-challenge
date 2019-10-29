@@ -4,11 +4,10 @@ import {
   fetchActualDataList,
   fetchAreaOfInterestList,
   fetchActualDataListDatabaseError,
-  fetchAreaOfInterestListDatabaseError,
-  fetchActualDataListUnknowError,
-  fetchAreaOfInterestListUnknownError
+  fetchActualDataListUnknowError
 } from "../../api/fake-api";
 import { DatabaseError } from "../../error";
+import { Button } from "semantic-ui-react";
 
 class SeriesDataPage extends React.Component {
   constructor(props) {
@@ -22,26 +21,26 @@ class SeriesDataPage extends React.Component {
 
     this.fetchSeriesData = this.fetchSeriesData.bind(this);
     this.getPromiseseSuccess = this.getPromiseseSuccess.bind(this);
-    this.getPromiseseError = this.getPromiseseError.bind(this);
-    this.getPromiseseNotValid = this.getPromiseseNotValid.bind(this);
+    this.getPromiseseError = this.getPromiseseDatabaseError.bind(this);
+    this.getPromiseseNotValid = this.getPromiseseUnknownError.bind(this);
+
+    this.handleOnClickSuccess = this.handleOnClickSuccess.bind(this);
+    this.handleOnClickErrorDatabase = this.handleOnClickErrorDatabase.bind(
+      this
+    );
+    this.handleOnClickErrorUnknown = this.handleOnClickErrorUnknown.bind(this);
   }
 
   getPromiseseSuccess() {
     return [fetchActualDataList(), fetchAreaOfInterestList()];
   }
 
-  getPromiseseError() {
-    return [
-      fetchActualDataListDatabaseError(),
-      fetchAreaOfInterestListDatabaseError()
-    ];
+  getPromiseseDatabaseError() {
+    return [fetchActualDataListDatabaseError(), fetchAreaOfInterestList()];
   }
 
-  getPromiseseNotValid() {
-    return [
-      fetchActualDataListUnknowError(),
-      fetchAreaOfInterestListUnknownError()
-    ];
+  getPromiseseUnknownError() {
+    return [fetchActualDataListUnknowError(), fetchAreaOfInterestList()];
   }
 
   fetchSeriesData(promises) {
@@ -66,8 +65,20 @@ class SeriesDataPage extends React.Component {
       });
   }
 
+  handleOnClickSuccess() {
+    this.fetchSeriesData(this.getPromiseseSuccess());
+  }
+
+  handleOnClickErrorDatabase() {
+    this.fetchSeriesData(this.getPromiseseDatabaseError());
+  }
+
+  handleOnClickErrorUnknown() {
+    this.fetchSeriesData(this.getPromiseseUnknownError());
+  }
+
   componentDidMount() {
-    this.fetchSeriesData(this.getPromiseseError());
+    this.fetchSeriesData(this.getPromiseseSuccess());
   }
 
   render() {
@@ -75,11 +86,24 @@ class SeriesDataPage extends React.Component {
     return (
       <div className="series-data-page">
         <div className="page-gutter"></div>
-        <SeriesDataList
-          actualDataList={actualDataList}
-          areaOfInterestList={areaOfInterestList}
-          hasError={hasError}
-        />
+        <div className="page-content">
+          <div>
+            <Button onClick={this.handleOnClickSuccess} color="green">
+              Success
+            </Button>
+            <Button onClick={this.handleOnClickErrorDatabase} color="red">
+              Error - Database
+            </Button>
+            <Button onClick={this.handleOnClickErrorUnknown} color="red">
+              Error - Unknown
+            </Button>
+          </div>
+          <SeriesDataList
+            actualDataList={actualDataList}
+            areaOfInterestList={areaOfInterestList}
+            hasError={hasError}
+          />
+        </div>
         <div className="page-gutter"></div>
       </div>
     );

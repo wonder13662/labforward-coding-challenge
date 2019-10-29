@@ -7,6 +7,9 @@
 .series-data-page > .page-gutter {
   width: 5rem;
 }
+.series-data-page > .page-content {
+  width: 100%;
+}
 
 .series-data-list-box {
   width: 100%;
