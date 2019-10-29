@@ -22,8 +22,10 @@ $ npm run start
   - The lower chart shows the area of interest
   - Scalable structure. If you add more data, it shows more lists
   - Using mock data but fetching pipeline could be replace with REST API
-- (TODO)Error handling
+- Error handling
   - Data validation
+  - Unknown error
+- (TODO)Implement React HOOKS
 
 ## Skill Set
 
