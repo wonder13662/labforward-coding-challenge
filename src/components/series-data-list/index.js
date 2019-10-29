@@ -11,14 +11,15 @@ class SeriesDataList extends React.Component {
 
     const listItems = [];
     for (let i = 0; i < actualDataList.length; i++) {
+      let key = `Series-${i + 1}`;
       listItems.push(
-        <li>
+        <li key={key}>
           <h3>{`Series-${i + 1}`}</h3>
         </li>
       );
 
       const actualData = actualDataList[i];
-      let key = `actualData-${i + 1}`;
+      key = `actualData-${i + 1}`;
       listItems.push(
         <SeriesDataListItem
           key={key}
@@ -57,8 +58,8 @@ class SeriesDataList extends React.Component {
 }
 
 SeriesDataList.propTypes = {
-  actualDataList: PropTypes.arrayOf(PropTypes.number).isRequired,
-  areaOfInterestList: PropTypes.arrayOf(PropTypes.number).isRequired,
+  actualDataList: PropTypes.arrayOf(PropTypes.array).isRequired,
+  areaOfInterestList: PropTypes.arrayOf(PropTypes.array).isRequired,
   hasError: PropTypes.bool.isRequired
 };
 

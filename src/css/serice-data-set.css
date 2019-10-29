@@ -11,6 +11,12 @@
   width: 100%;
 }
 
+.page-loader {
+  position: fixed;
+  top: 50%;
+  width: 100%;
+}
+
 .series-data-list-box {
   width: 100%;
 }

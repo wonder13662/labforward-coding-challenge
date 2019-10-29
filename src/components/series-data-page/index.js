@@ -7,7 +7,7 @@ import {
   fetchActualDataListUnknowError
 } from "../../api/fake-api";
 import { DatabaseError } from "../../error";
-import { Button } from "semantic-ui-react";
+import { Button, Loader } from "semantic-ui-react";
 
 class SeriesDataPage extends React.Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class SeriesDataPage extends React.Component {
     this.state = {
       actualDataList: [],
       areaOfInterestList: [],
+      isFetching: false,
       hasError: false
     };
 
@@ -44,11 +45,18 @@ class SeriesDataPage extends React.Component {
   }
 
   fetchSeriesData(promises) {
+    this.setState({ isFetching: true });
+
     Promise.all(promises)
       .then(responses => {
         const actualDataList = responses[0].data.actualData;
         const areaOfInterestList = responses[1].data.areaOfInterest;
-        this.setState({ actualDataList, areaOfInterestList, hasError: false });
+        this.setState({
+          actualDataList,
+          areaOfInterestList,
+          isFetching: false,
+          hasError: false
+        });
       })
       .catch(error => {
         if (error instanceof DatabaseError) {
@@ -60,6 +68,7 @@ class SeriesDataPage extends React.Component {
         this.setState({
           actualDataList: [new Array(50).fill(0)],
           areaOfInterestList: [new Array(50).fill(0)],
+          isFetching: false,
           hasError: true
         });
       });
@@ -82,27 +91,59 @@ class SeriesDataPage extends React.Component {
   }
 
   render() {
-    const { actualDataList, areaOfInterestList, hasError } = this.state;
+    const {
+      actualDataList,
+      areaOfInterestList,
+      hasError,
+      isFetching
+    } = this.state;
+
+    let btnAttrs = {};
+    if (isFetching) {
+      btnAttrs["disabled"] = true;
+    }
+
     return (
       <div className="series-data-page">
+        {isFetching ? (
+          <div className="page-loader">
+            <Loader active inline="centered">
+              Loading
+            </Loader>
+          </div>
+        ) : null}
         <div className="page-gutter"></div>
         <div className="page-content">
           <div>
-            <Button onClick={this.handleOnClickSuccess} color="green">
+            <Button
+              onClick={this.handleOnClickSuccess}
+              color="green"
+              {...btnAttrs}
+            >
               Success
             </Button>
-            <Button onClick={this.handleOnClickErrorDatabase} color="red">
+            <Button
+              onClick={this.handleOnClickErrorDatabase}
+              color="red"
+              {...btnAttrs}
+            >
               Error - Database
             </Button>
-            <Button onClick={this.handleOnClickErrorUnknown} color="red">
+            <Button
+              onClick={this.handleOnClickErrorUnknown}
+              color="red"
+              {...btnAttrs}
+            >
               Error - Unknown
             </Button>
           </div>
-          <SeriesDataList
-            actualDataList={actualDataList}
-            areaOfInterestList={areaOfInterestList}
-            hasError={hasError}
-          />
+          {!isFetching ? (
+            <SeriesDataList
+              actualDataList={actualDataList}
+              areaOfInterestList={areaOfInterestList}
+              hasError={hasError}
+            />
+          ) : null}
         </div>
         <div className="page-gutter"></div>
       </div>

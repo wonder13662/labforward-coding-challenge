@@ -4,25 +4,33 @@ import { DatabaseError } from "../error";
 
 const fetchActualDataList = function() {
   return new Promise((resolve, reject) => {
-    resolve({ data: actualData });
+    setTimeout(() => {
+      resolve({ data: actualData });
+    }, 3000);
   });
 };
 
 const fetchAreaOfInterestList = function() {
   return new Promise((resolve, reject) => {
-    resolve({ data: areaOfInterest });
+    setTimeout(() => {
+      resolve({ data: areaOfInterest });
+    }, 3000);
   });
 };
 
 const fetchActualDataListUnknowError = function() {
   return new Promise((resolve, reject) => {
-    reject(new Error("Unknown error occured!"));
+    setTimeout(() => {
+      reject(new Error("Unknown error occured!"));
+    }, 3000);
   });
 };
 
 const fetchActualDataListDatabaseError = function() {
   return new Promise((resolve, reject) => {
-    reject(new DatabaseError("Fail to fetch the data from server!"));
+    setTimeout(() => {
+      reject(new DatabaseError("Fail to fetch the data from server!"));
+    }, 3000);
   });
 };
 
