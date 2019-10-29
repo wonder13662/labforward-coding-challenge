@@ -1,0 +1,40 @@
+.series-data-page {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+
+.series-data-page > .page-gutter {
+  width: 5rem;
+}
+.series-data-page > .page-content {
+  width: 100%;
+}
+
+.page-loader {
+  position: fixed;
+  top: 50%;
+  width: 100%;
+}
+
+.series-data-list-box {
+  width: 100%;
+}
+
+.series-data-list-box.disabled {
+  opacity: 0.3;
+}
+
+.series-data-list-box > .series-data-list {
+  list-style-type: none;
+}
+
+.item-box {
+  height: 250px;
+}
+
+.item-box > div:last-child {
+  position: relative;
+  top: -250px;
+  opacity: 0.4;
+}
