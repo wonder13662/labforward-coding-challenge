@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SeriesDataListItem from "./SeriesDataListItem";
+import SignalListItem from "./SignalListItem";
 import "../../css/serice-data-set.css";
 
-const COLORS = ["#1f78b4", "#e31a1c", "#f1e15b"];
+const COLORS = ["#4eb3f6", "#ff6062", "#00EB9B"];
+const COLORS_FOCUS = ["#1f78b4", "#e31a1c", "#0fba23"];
 
 class SeriesDataList extends React.Component {
   render() {
@@ -19,33 +21,31 @@ class SeriesDataList extends React.Component {
       );
 
       const actualData = actualDataList[i];
+      const areaOfInterest = areaOfInterestList[i];
       key = `actualData-${i + 1}`;
       listItems.push(
-        <SeriesDataListItem
-          key={key}
-          color={COLORS[i]}
-          name={key}
-          data={actualData}
-          enableArea={false}
-          legendAxisLeft={"Data"}
-          legendAxisBottom={"Time Series"}
-          hasError={hasError}
-        />
-      );
-
-      const areaOfInterest = areaOfInterestList[i];
-      key = `areaOfInterest-${i + 1}`;
-      listItems.push(
-        <SeriesDataListItem
-          key={key}
-          color={COLORS[i]}
-          name={key}
-          data={areaOfInterest}
-          enableArea={true}
-          legendAxisLeft={"Signal"}
-          legendAxisBottom={"Time Series"}
-          hasError={hasError}
-        />
+        <li key={key} className="item-box">
+          <SeriesDataListItem
+            colors={[COLORS_FOCUS[i]]}
+            name={key}
+            data={actualData}
+            enableArea={false}
+            legendAxisLeft={"Data"}
+            legendAxisBottom={"Time Series"}
+            hasError={hasError}
+          />
+          <SignalListItem
+            className="signal-list-item"
+            key={key}
+            colors={[COLORS[i]]}
+            name={key}
+            data={areaOfInterest}
+            enableArea={true}
+            legendAxisLeft={"Signal"}
+            legendAxisBottom={"Time Series"}
+            hasError={hasError}
+          />
+        </li>
       );
     }
 

@@ -1,18 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LineGraph from "./LineGraph";
+import LineGraphSignal from "./LineGraphSignal";
 
 class SeriesDataListItem extends React.Component {
   render() {
-    const {
-      data,
-      name,
-      colors,
-      enableArea,
-      legendAxisLeft,
-      legendAxisBottom,
-      hasError
-    } = this.props;
+    const { data, name, colors, enableArea, hasError } = this.props;
 
     const graphData = {
       id: name,
@@ -20,14 +12,12 @@ class SeriesDataListItem extends React.Component {
     };
 
     return (
-      <LineGraph
+      <LineGraphSignal
         data={[graphData]}
         enableArea={enableArea}
-        legendAxisLeft={legendAxisLeft}
-        legendAxisBottom={legendAxisBottom}
         colors={!!hasError ? ["#999999"] : colors}
         hasError={hasError}
-      ></LineGraph>
+      ></LineGraphSignal>
     );
   }
 }
@@ -38,8 +28,6 @@ SeriesDataListItem.propTypes = {
   name: PropTypes.string.isRequired,
   colors: PropTypes.arrayOf(PropTypes.string),
   enableArea: PropTypes.bool,
-  legendAxisLeft: PropTypes.string.isRequired,
-  legendAxisBottom: PropTypes.string.isRequired,
   hasError: PropTypes.bool.isRequired
 };
 
