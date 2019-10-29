@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import LineGraph from "./LineGraph";
+import { GRAY } from "../../const";
 
 class SeriesDataListItem extends React.Component {
   render() {
@@ -25,7 +26,7 @@ class SeriesDataListItem extends React.Component {
         enableArea={enableArea}
         legendAxisLeft={legendAxisLeft}
         legendAxisBottom={legendAxisBottom}
-        colors={!!hasError ? ["#999999"] : colors}
+        colors={!!hasError ? [GRAY] : colors}
         hasError={hasError}
       ></LineGraph>
     );

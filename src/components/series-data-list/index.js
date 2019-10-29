@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import SeriesDataListItem from "./SeriesDataListItem";
 import SignalListItem from "./SignalListItem";
 import "../../css/serice-data-set.css";
-
-const COLORS = ["#4eb3f6", "#ff6062", "#00EB9B"];
-const COLORS_FOCUS = ["#1f78b4", "#e31a1c", "#0fba23"];
+import { COLORS, COLORS_FOCUS } from "../../const";
 
 class SeriesDataList extends React.Component {
   render() {
@@ -16,7 +14,7 @@ class SeriesDataList extends React.Component {
       let key = `Series-${i + 1}`;
       listItems.push(
         <li key={key}>
-          <h3>{`Series-${i + 1}`}</h3>
+          <h3>{key}</h3>
         </li>
       );
 
@@ -26,7 +24,7 @@ class SeriesDataList extends React.Component {
       listItems.push(
         <li key={key} className="item-box">
           <SeriesDataListItem
-            colors={[COLORS_FOCUS[i]]}
+            colors={[COLORS[i]]}
             name={key}
             data={actualData}
             enableArea={false}
@@ -37,7 +35,7 @@ class SeriesDataList extends React.Component {
           <SignalListItem
             className="signal-list-item"
             key={key}
-            colors={[COLORS[i]]}
+            colors={[COLORS_FOCUS[i]]}
             name={key}
             data={areaOfInterest}
             enableArea={true}

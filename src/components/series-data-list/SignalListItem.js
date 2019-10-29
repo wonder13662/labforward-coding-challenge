@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import LineGraphSignal from "./LineGraphSignal";
+import { GRAY } from "../../const";
 
 class SeriesDataListItem extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class SeriesDataListItem extends React.Component {
       <LineGraphSignal
         data={[graphData]}
         enableArea={enableArea}
-        colors={!!hasError ? ["#999999"] : colors}
+        colors={!!hasError ? [GRAY] : colors}
         hasError={hasError}
       ></LineGraphSignal>
     );
