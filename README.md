@@ -23,8 +23,8 @@ $ npm run start
   - Scalable structure. If you add more data, it shows more lists
   - Using mock data but fetching pipeline could be replace with REST API
 - Error handling
-  - Data validation
-  - Unknown error
+  - Database error (Custom error type)
+  - Unknown error (Native JS error type)
 
 ## Skill Set
 
