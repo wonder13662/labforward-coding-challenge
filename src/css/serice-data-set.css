@@ -12,10 +12,14 @@
   width: 100%;
 }
 
+.series-data-list-box.disabled {
+  opacity: 0.3;
+}
+
 .series-data-list-box > .series-data-list {
   list-style-type: none;
 }
 
 .item-box {
-  height: 400px;
+  height: 250px;
 }

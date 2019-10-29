@@ -7,7 +7,8 @@ class SeriesDataListItem extends React.Component {
     enableArea = false,
     legendAxisLeft,
     legendAxisBottom,
-    color
+    color,
+    hasError
   }) {
     return (
       <ResponsiveLine
@@ -37,7 +38,7 @@ class SeriesDataListItem extends React.Component {
         }}
         colors={[color]}
         borderColor={{ from: "color" }}
-        enableArea={enableArea}
+        enableArea={hasError ? false : enableArea}
         animate={false}
         pointSize={8}
         pointColor="#ffffff"
@@ -45,7 +46,7 @@ class SeriesDataListItem extends React.Component {
         pointBorderColor={{ from: "serieColor" }}
         pointLabel="y"
         pointLabelYOffset={-12}
-        useMesh={true}
+        useMesh={!hasError}
         legends={[
           {
             anchor: "bottom-right",
@@ -83,7 +84,8 @@ class SeriesDataListItem extends React.Component {
       color,
       enableArea,
       legendAxisLeft,
-      legendAxisBottom
+      legendAxisBottom,
+      hasError
     } = this.props;
 
     const graphData = {
@@ -96,7 +98,8 @@ class SeriesDataListItem extends React.Component {
       enableArea,
       legendAxisLeft,
       legendAxisBottom,
-      color
+      color: !!hasError ? "#999999" : color,
+      hasError
     });
 
     return <li className="item-box">{lineChart}</li>;
@@ -104,3 +107,5 @@ class SeriesDataListItem extends React.Component {
 }
 
 export default SeriesDataListItem;
+
+// TODO Proptypes

@@ -6,7 +6,7 @@ const COLORS = ["#1f78b4", "#e31a1c", "#f1e15b"];
 
 class SeriesDataList extends React.Component {
   render() {
-    const { actualDataList, areaOfInterestList } = this.props;
+    const { actualDataList, areaOfInterestList, hasError } = this.props;
 
     const listItems = [];
     for (let i = 0; i < actualDataList.length; i++) {
@@ -27,6 +27,7 @@ class SeriesDataList extends React.Component {
           enableArea={false}
           legendAxisLeft={"Data"}
           legendAxisBottom={"Time Series"}
+          hasError={hasError}
         />
       );
 
@@ -41,14 +42,13 @@ class SeriesDataList extends React.Component {
           enableArea={true}
           legendAxisLeft={"Signal"}
           legendAxisBottom={"Time Series"}
+          hasError={hasError}
         />
       );
     }
 
-    console.log("listItems.length:", listItems.length);
-
     return (
-      <div className="series-data-list-box">
+      <div className={`series-data-list-box ${hasError ? "disabled" : ""}`}>
         <ul className="series-data-list">{listItems}</ul>
       </div>
     );
