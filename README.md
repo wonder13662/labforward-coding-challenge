@@ -18,14 +18,12 @@ $ npm run start
 
 - Accomplished the MVP Task: Simple react app that satisfied the User story
 - Implementations
-  - The upper chart shows the actual data
-  - The lower chart shows the area of interest
+  - The area of interest is layered over the actual chart so that researcher could quickly notice the important changes
   - Scalable structure. If you add more data, it shows more lists
   - Using mock data but fetching pipeline could be replace with REST API
 - Error handling
   - Data validation
   - Unknown error
-- (TODO)Implement React HOOKS
 
 ## Skill Set
 
