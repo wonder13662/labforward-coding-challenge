@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import SeriesDataListItem from "./SeriesDataListItem";
 import "../../css/serice-data-set.css";
 
@@ -54,5 +55,11 @@ class SeriesDataList extends React.Component {
     );
   }
 }
+
+SeriesDataList.propTypes = {
+  actualDataList: PropTypes.arrayOf(PropTypes.number).isRequired,
+  areaOfInterestList: PropTypes.arrayOf(PropTypes.number).isRequired,
+  hasError: PropTypes.bool.isRequired
+};
 
 export default SeriesDataList;

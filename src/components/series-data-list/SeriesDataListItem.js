@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ResponsiveLine } from "@nivo/line";
 
 class SeriesDataListItem extends React.Component {
@@ -106,6 +107,14 @@ class SeriesDataListItem extends React.Component {
   }
 }
 
-export default SeriesDataListItem;
+SeriesDataListItem.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.number).isRequired,
+  name: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  enableArea: PropTypes.bool,
+  legendAxisLeft: PropTypes.string.isRequired,
+  legendAxisBottom: PropTypes.string.isRequired,
+  hasError: PropTypes.bool.isRequired
+};
 
-// TODO Proptypes
+export default SeriesDataListItem;
