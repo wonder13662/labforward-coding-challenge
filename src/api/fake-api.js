@@ -16,12 +16,7 @@ const fetchAreaOfInterestList = function() {
 
 const fetchActualDataListUnknowError = function() {
   return new Promise((resolve, reject) => {
-    resolve({ data: actualData });
-  });
-};
-const fetchAreaOfInterestListUnknownError = function() {
-  return new Promise((resolve, reject) => {
-    resolve({ data: areaOfInterest });
+    reject(new Error("Unknown error occured!"));
   });
 };
 
@@ -31,17 +26,9 @@ const fetchActualDataListDatabaseError = function() {
   });
 };
 
-const fetchAreaOfInterestListDatabaseError = function() {
-  return new Promise((resolve, reject) => {
-    reject(new DatabaseError("Fail to fetch the data from server!"));
-  });
-};
-
 export {
   fetchActualDataList,
   fetchAreaOfInterestList,
   fetchActualDataListUnknowError,
-  fetchAreaOfInterestListUnknownError,
-  fetchActualDataListDatabaseError,
-  fetchAreaOfInterestListDatabaseError
+  fetchActualDataListDatabaseError
 };
